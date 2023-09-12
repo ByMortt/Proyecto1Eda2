@@ -6,6 +6,11 @@ public class Main {
             array[i] = (int)(Math.random() * 101);
         }
         Utilerias.print(array);
+        //Selection sort
+        System.out.println("Selection sort");
         Ordenamientos.selectionSort(array);
+        //Insertion sort
+        System.out.println("Insertion sort");
+        Ordenamientos.insertionSort(array);
     }
 }
