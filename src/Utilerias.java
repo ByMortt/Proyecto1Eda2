@@ -14,7 +14,8 @@ public class Utilerias {
         System.out.println();
     }
 
-    //Heap Sort Utilities heapyfy(print how heapyfy works to the console) , buildHeap (print how the heap is built to the console)
+    //Heap Sort Utilities Heapify and buildHeap
+    //Heapify
     public static void heapify(int[] array, int n, int i) {
         int largest = i; // Initialize largest as root
         int l = 2 * i + 1; // left = 2*i + 1
