@@ -67,6 +67,34 @@ public class Utilerias {
         System.out.printf("Operaciones: %d\n", operations);
     }
 
+    //Bucket Sort Utilities
+    //maxValue
+    public static int maxValue(int[] array) {
+        int maxValue = 0;
+        for (int j : array) {
+            if (j > maxValue) {
+                maxValue = j;
+            }
+        }
+        return maxValue;
+    }
 
+    //minValue
+    public static int minValue(int[] array) {
+        int minValue = array[0];
+        for (int j : array) {
+            if (j < minValue) {
+                minValue = j;
+            }
+        }
+        return minValue;
+    }
 
+    //printBucket content
+    public static void printBucket(int[] array) {
+        for (int j : array) {
+            System.out.printf("%d ", j);
+        }
+        System.out.println();
+    }
 }

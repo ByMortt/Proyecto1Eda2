@@ -43,33 +43,7 @@ public class Ordenamientos {
         System.out.printf("Operaciones: %d\n", operations);
     }
 
-    /*Bubble sort
-    from this structure:
-        void bubbleSort(int a[], int size) {
-    int i, j, n;
-    n = size;
-
-    for (i = n - 1; i > 0; i--) {
-        bool swapped = false; // Flag para verificar si hubo intercambios en esta iteración
-
-        for (j = 0; j < i; j++) {
-            if (a[j] > a[j + 1]) {
-                swap(&a[j], &a[j + 1]);
-                swapped = true; // Se produjo un intercambio
-            }
-        }
-
-        if (!swapped) {
-            break; // Si no hubo intercambios, el arreglo ya está ordenado
-        }
-
-        printf("\nIteracion numero %d \n",n-i);
-		printArray(a,n);
-    }
-}
-print the number of comparisons and swaps made by the algorithm and the total number of operations (comparisons + swaps)
-
-     */
+    // Bubble sort
     public static void bubbleSort(int[] array) {
         int comparisons = 0;
         int swaps = 0;
@@ -99,7 +73,7 @@ print the number of comparisons and swaps made by the algorithm and the total nu
         System.out.printf("Operaciones: %d\n", operations);
     }
 
-    //Heap sort, but add the total number of operations (comparisons + swaps) that made the algorithm (includes heapyfy and buildHeap)
+    //Heap sort
     public static void heapSort(int[] array) {
         int comparisons = 0;
         int swaps = 0;
@@ -123,4 +97,42 @@ print the number of comparisons and swaps made by the algorithm and the total nu
         System.out.printf("Operaciones: %d\n", operations);
     }
 
+    // bucket sort algorithm, like the past algorithms, count the number of operations and print the array after each iteration
+    public static void bucketSort(int[] array) {
+        int comparisons = 0;
+        int swaps = 0;
+        int operations;
+        int max = Utilerias.maxValue(array); //maxValue(array);
+        int min = Utilerias.minValue(array); //minValue(array);
+        int range = max - min + 1;
+        int[] bucket = new int[range];
+        // Fill buckets
+        for (int k : array) {
+            bucket[k - min]++;
+            comparisons++;
+            // Imprimir el contenido de la cubeta en cada iteración
+            System.out.println("Contenido de la cubeta:");
+            for (int i = 0; i < bucket.length; i++) {
+                System.out.printf("%d: %d\n", i + min, bucket[i]);
+            }
+        }
+        int outPos = 0;
+        // Move buckets to original array
+        for (int i = 0; i < range; i++) {
+            for (int j = 0; j < bucket[i]; j++) {
+                // Imprimir el arreglo después de cada paso
+                System.out.println("Arreglo ordenado parcialmente:");
+                Utilerias.print(array);
+                array[outPos++] = i + min;
+                swaps++;
+            }
+        }
+        operations = comparisons + swaps;
+        System.out.println("Lista ordenada");
+        Utilerias.print(array);
+        System.out.println("Operaciones de bucket sort");
+        System.out.printf("Comparaciones: %d\n", comparisons);
+        System.out.printf("Intercambios: %d\n", swaps);
+        System.out.printf("Operaciones: %d\n", operations);
+    }
 }
